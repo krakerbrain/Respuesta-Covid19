@@ -1,0 +1,149 @@
+<!-- HITO 1 - 1. Crear una estructura básica con HTML para el proyecto y cargar la librería de
+bootstrap o similar, además de jQuery. -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <title>Covid-19</title>
+
+    <style>
+      body {
+        font-family: monospace;
+        padding-top: 5rem;
+      }
+      .starter-template {
+        padding: 3rem 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Covid-19</a>
+      <!-- HITO 2 - 1. Crear una barra de navegación en la parte superior con una opción que diga “Home”
+y otra de “Iniciar sesión” -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" id="js-link-home" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="js-link-login" data-toggle="modal" data-target="#formModal" href="#" style="display: block">Iniciar sesión</a>
+        </li>
+        <li class="nav-item" id="js-link-chile" style="display: none">
+          <a class="nav-link" href="#">Situacion Chile</a>
+        </li>
+        <li class="nav-item" id="js-link-logout" style="display: none">
+          <a class="nav-link" href="#">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="container">
+      <div class="starter-template">
+        <div id="main-section" class="row">
+          <div class="col-md-12 text-center">
+            <h2>Paises con Covid19</h2>
+          </div>
+          <div class="col-md-12 my-4">
+            <canvas id="covidChart"></canvas>
+          </div>
+          <div class="col-md-12 my-4">
+            <table id="js-table-countries" class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Pais</th>
+                  <th scope="col">Casos Activos</th>
+                  <th scope="col">Casos Confirmados</th>
+                  <th scope="col">Casos Muertos</th>
+                  <th scope="col">Casos Recuperados</th>
+                  <th scope="col">#</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="chile-section" class="row" style="display: none">
+          <div class="col-md-12 text-center">
+            <h2>Situacion Chile</h2>
+          </div>
+          <div class="col-md-12 text-center">
+            <canvas id="covidChileChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal Hito 1 Grafico de Pie -->
+    <div class="modal fade" id="countryModal" tabindex="-1" role="dialog" aria-labelledby="countryModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <canvas id="modalCovidChart"></canvas>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HITO 2 - 2. Al hacer click en Iniciar sesión se debe levantar un modal con un formulario que le
+pida al usuario ingresar un correo y una contraseña. -->
+
+    <!-- Modal Hito 2 Formulario -->
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Iniciar Sesion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="js-form-login">
+              <div class="form-group">
+                <label>Email address</label>
+                <input type="email" id="js-input-email" class="form-control" aria-describedby="emailHelp" />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="js-input-password" class="form-control" />
+              </div>
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mario -->
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
+    <script type="module" src="./assets/scriptsHito1.js"></script>
+    <script type="module" src="./assets/scriptsHito2.js"></script>
+  </body>
+</html>
